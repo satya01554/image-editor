@@ -1,51 +1,33 @@
-const upload = document.getElementById("uploadImage");
-const preview = document.getElementById("preview");
+const upload = document.getElementById("upload");
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
 
-upload.addEventListener("change", function(){
-  const file = this.files[0];
-  if(file){
-    const reader = new FileReader();
-    reader.onload = function(e){
-      preview.src = e.target.result;
-    }
-    reader.readAsDataURL(file);
-  }
-});
-function cropImage(){
+let img = new Image();
 
-preview.style.width = "300px";
-preview.style.height = "300px";
+upload.onchange = function(){
 
-}
+img.src = URL.createObjectURL(upload.files[0]);
 
-function addText(){
+img.onload = function(){
 
-let text = prompt("Enter text");
+canvas.width = img.width;
+canvas.height = img.height;
 
-let div = document.createElement("div");
-
-div.innerText = text;
-div.style.position = "absolute";
-div.style.top = "200px";
-div.style.left = "200px";
-div.style.color = "red";
-div.style.fontSize = "30px";
-
-document.body.appendChild(div);
+ctx.drawImage(img,0,0);
 
 }
 
-function draw(){
-
-preview.style.border = "5px solid red";
-
 }
 
-function undo(){
+function detectText(){
 
-preview.style = "";
+Tesseract.recognize(
+canvas,
+'eng',
+).then(({ data:{ text } }) => {
+
+alert("Detected Text: " + text);
+
+})
 
 }
-
-
-
