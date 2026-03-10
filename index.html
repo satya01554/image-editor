@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Professional Image Editor</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>Professional Image Editor</h1>
+
+<input type="file" id="upload">
+
+<div class="container">
+
+<img id="preview">
+
+<div class="controls">
+
+<label>Brightness</label>
+<input type="range" id="brightness" min="0" max="200" value="100">
+
+<label>Contrast</label>
+<input type="range" id="contrast" min="0" max="200" value="100">
+
+<button onclick="grayscale()">Grayscale</button>
+<button onclick="rotate()">Rotate</button>
+<button onclick="flip()">Flip</button>
+
+<button onclick="reset()">Reset</button>
+<button onclick="downloadImage()">Download</button>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
