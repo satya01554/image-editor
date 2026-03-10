@@ -1,21 +1,41 @@
-<input type="file" id="uploadImage" accept="image/*">
+<!DOCTYPE html>
+<html>
+<head>
+<title>Image Text Editor</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/4.0.2/tesseract.min.js"></script>
+<style>
+
+body{
+font-family:Arial;
+text-align:center;
+background:#222;
+color:white;
+}
+
+canvas{
+border:2px solid white;
+margin-top:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h2>Image Text Editor</h2>
+
+<input type="file" id="upload">
+
 <br><br>
-<img id="preview" width="400">
-<div class="editor">
-<label>Brightness</label>
-<input type="range" id="brightness" min="0" max="200" value="100">
 
-<label>Contrast</label>
-<input type="range" id="contrast" min="0" max="200" value="100">
+<canvas id="canvas"></canvas>
 
-<label>Blur</label>
-<input type="range" id="blur" min="0" max="10" value="0">
+<br><br>
 
-<label>Grayscale</label>
-<input type="range" id="grayscale" min="0" max="100" value="0">
+<button onclick="detectText()">Detect Text</button>
 
-<button onclick="reset()">Reset</button>
+<script src="script.js"></script>
 
-</div>
-
+</body>
+</html>
 
