@@ -1,29 +1,37 @@
-let brightness = document.getElementById("brightness");
-let contrast = document.getElementById("contrast");
-let blur = document.getElementById("blur");
-let grayscale = document.getElementById("grayscale");
+function cropImage(){
 
-brightness.oninput = updateFilter;
-contrast.oninput = updateFilter;
-blur.oninput = updateFilter;
-grayscale.oninput = updateFilter;
-
-function updateFilter(){
-
-preview.style.filter =
-"brightness(" + brightness.value + "%) " +
-"contrast(" + contrast.value + "%) " +
-"blur(" + blur.value + "px) " +
-"grayscale(" + grayscale.value + "%)";
-}
-
-function reset(){
-
-brightness.value = 100;
-contrast.value = 100;
-blur.value = 0;
-grayscale.value = 0;
-
-preview.style.filter = "none";
+preview.style.width = "300px";
+preview.style.height = "300px";
 
 }
+
+function addText(){
+
+let text = prompt("Enter text");
+
+let div = document.createElement("div");
+
+div.innerText = text;
+div.style.position = "absolute";
+div.style.top = "200px";
+div.style.left = "200px";
+div.style.color = "red";
+div.style.fontSize = "30px";
+
+document.body.appendChild(div);
+
+}
+
+function draw(){
+
+preview.style.border = "5px solid red";
+
+}
+
+function undo(){
+
+preview.style = "";
+
+}
+
+
