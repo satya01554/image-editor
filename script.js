@@ -1,3 +1,16 @@
+const upload = document.getElementById("uploadImage");
+const preview = document.getElementById("preview");
+
+upload.addEventListener("change", function(){
+  const file = this.files[0];
+  if(file){
+    const reader = new FileReader();
+    reader.onload = function(e){
+      preview.src = e.target.result;
+    }
+    reader.readAsDataURL(file);
+  }
+});
 function cropImage(){
 
 preview.style.width = "300px";
@@ -33,5 +46,6 @@ function undo(){
 preview.style = "";
 
 }
+
 
 
